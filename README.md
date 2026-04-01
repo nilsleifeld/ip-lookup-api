@@ -49,32 +49,7 @@ On startup, the app tries to open the local MMDB. If the file is missing, the ho
 
 ## API
 
-Base path: `/api/v1`. For request/response bodies and status codes, see [docs/api.md](docs/api.md).
-
-### `GET /api/v1/ip-lookup?ip=<address>`
-
-Looks up the given IPv4 or IPv6 address. Returns a JSON object with the GeoIP2 City fields MaxMind provides for that IP.
-
-Errors:
-
-- `400` — missing `ip` query parameter or invalid IP
-- `404` — address not in the database
-- `503` — MMDB not loaded yet
-
-### `GET /api/v1/ip-lookup/me`
-
-Looks up the caller’s IP. Resolution order:
-
-1. `X-Forwarded-For` (first hop)
-2. `CF-Connecting-IP`, `True-Client-IP`, `X-Real-IP`
-3. Bun `server.requestIP` (socket address)
-
-Errors:
-
-- `400` — client IP could not be determined
-- `404` / `503` — same as above
-
-Example requests for VS Code REST Client or JetBrains HTTP Client live in [`ip-lookup-api.http`](ip-lookup-api.http).
+Endpoints, request/response bodies, and status codes: [docs/api.md](docs/api.md).
 
 ## MaxMind sync
 
