@@ -1,0 +1,14 @@
+node_modules
+out
+dist
+coverage
+data
+*.tgz
+.env
+.env.*
+!.env.example
+bun.lockb
+.cache
+.idea
+.DS_Store
+*.tsbuildinfo

@@ -1,0 +1,34 @@
+### ip-lookup-api — local requests (VS Code REST Client / JetBrains HTTP Client)
+### Server: bun dev  (default port 3000, or set PORT)
+### Set IP_LOOKUP_API_KEY in the environment; use the same value below:
+@apiKey = your-secret-key-here
+
+### GeoIP for an IP (query parameter ip)
+GET http://localhost:3000/api/v1/ip-lookup?ip=145.255.49.45
+X-API-Key: {{apiKey}}
+
+###
+
+### GeoIP for another IP (IPv6 example)
+GET http://localhost:3000/api/v1/ip-lookup?ip=2001:4860:4860::8888
+X-API-Key: {{apiKey}}
+
+###
+
+### GeoIP for the calling client (socket IP; behind a proxy use headers below)
+GET http://localhost:3000/api/v1/ip-lookup/me
+X-API-Key: {{apiKey}}
+
+###
+
+### Same as /me but simulate client IP (when your proxy sets X-Forwarded-For)
+GET http://localhost:3000/api/v1/ip-lookup/me
+X-API-Key: {{apiKey}}
+X-Forwarded-For: 203.0.113.42
+
+###
+
+### Optional: Cloudflare / other edge headers
+GET http://localhost:3000/api/v1/ip-lookup/me
+X-API-Key: {{apiKey}}
+CF-Connecting-IP: 198.51.100.7
